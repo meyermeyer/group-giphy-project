@@ -10,7 +10,10 @@ import axios from 'axios';
 
 
 const displayResults = (state, action) => {
-	return {};
+	if(action.type==='DISPLAY_RESULTS'){
+		return action.payload;
+	}
+	return state;
 }
 
 function* sagaWatcher(){
