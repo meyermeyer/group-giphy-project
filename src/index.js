@@ -14,7 +14,26 @@ const displayResults = (state, action) => {
 }
 
 function* sagaWatcher(){
+	yield takeEvery(`GET_CATS`, getCats)
+}
 
+function* getCats() {
+	try {
+		const catResponse = yield axios.get('/api/category')
+
+		yield put({type: `SHOW_CATS`, payload: catResponse.data})
+	} catch (error) {
+		console.log(error);	
+	}
+}
+
+const showCats = (state = [], action) => {
+	switch (action.type) {
+		case `SHOW_CATS`:
+			return action.payload
+		default:
+			return state;
+	}
 }
 
 const sagaMiddleware = createSagaMiddleware();
@@ -22,6 +41,7 @@ const sagaMiddleware = createSagaMiddleware();
 const storeInstance = createStore(
 	combineReducers({
 		displayResults,
+		showCats
 	}),
 	applyMiddleware(sagaMiddleware, logger),
 )
