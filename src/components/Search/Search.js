@@ -19,6 +19,13 @@ class Search extends Component {
 	searchSubmit = event => {
 		event.preventDefault();
 		console.log('submit search!')
+		// pass the search url to our saga
+		let url = `/search?tag=${this.state.search}`
+		this.props.dispatch({type: 'GET_RESULTS', payload: url})
+		// clear local search state
+		this.setState({
+			search: ''
+		})
 	};//end searchSubmit
 
 	render(){
