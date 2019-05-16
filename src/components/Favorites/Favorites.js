@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
@@ -38,10 +37,6 @@ export class Favorites extends Component {
                     return (
                         <>
                             <option value={cat.name}>{cat.name}</option>
-                            {/* <option value="vega">Vega</option>
-                            <option value="cartoon">Cartoon</option>
-                            <option value="nsfw">NFSW</option>
-                            <option value="meme">Meme</option> */}
                         </>
                     )
                 })}
