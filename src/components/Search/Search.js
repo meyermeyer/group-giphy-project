@@ -20,7 +20,7 @@ class Search extends Component {
 		event.preventDefault();
 		console.log('submit search!')
 		// pass the search url to our saga
-		let url = `/search?tag=${this.state.search}`
+		let url = `/search?query=${this.state.search}`
 		this.props.dispatch({type: 'GET_RESULTS', payload: url})
 		// clear local search state
 		this.setState({
@@ -29,7 +29,7 @@ class Search extends Component {
 	};//end searchSubmit
 
 	render(){
-		console.log('search:', this.state.search);
+		//console.log('search:', this.state.search);
 		return(
 			<div className="searchDiv">
 				<form className="searchForm" onSubmit={this.searchSubmit} >
