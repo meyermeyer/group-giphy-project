@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, IconButton, TextField} from '@material-ui/core';
 import {FavoriteBorder, Favorite} from '@material-ui/icons';
+import axios from 'axios';
 
 class Search extends Component {
 
@@ -10,6 +11,7 @@ class Search extends Component {
 		search: '',
 		isFavorite: false
 	}
+
 
 	favoriteClick = (event) => {
 		console.log('favorited!');
@@ -30,21 +32,11 @@ class Search extends Component {
 		console.log('submit search!')
 		// pass the search url to our saga
 		let url = `/api/search?query=${this.state.search}`
-		
-		
-		axios.get(url)
-		.then(response => {
-			console.log(response.data);
-			
-			this.props.dispatch({type: 'GET_RESULTS', payload: response.data})
-		})
-		.catch(error => {
-			console.log('in searchSubmit', error);
-		})
-		// clear local search state
+		this.props.dispatch({type: 'GET_RESULTS', payload: url})
 		this.setState({
 			search: ''
 		})
+
 	};//end searchSubmit
 
 	render(){
@@ -79,13 +71,15 @@ class Search extends Component {
 
 				<div className="displaySearchDiv">
 					<p>GIFS GO HERE</p>
-					{/* {this.props.reduxState.displayResults.map((gif, i) => {
+					{this.props.reduxState.displayResults.map((gif, i) => {
 						return(
-							<img key={i} src={this.props.reduxState.displayResults.gif.PATH} alt="id?"/>
+							<div> 
+							<img key={i} src={gif.images.downsized_medium.url} alt="id?"/>
 							<Button type="submit" variant="contained"
 								color="primary">Favorite!</Button>
+								</div>
 						)
-					})} */}
+					})}
 				</div>
 			</div>
 		)
