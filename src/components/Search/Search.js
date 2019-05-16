@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, IconButton, TextField} from '@material-ui/core';
 import {FavoriteBorder, Favorite} from '@material-ui/icons';
-import axios from 'axios';
+
 
 class Search extends Component {
 
@@ -29,7 +29,7 @@ class Search extends Component {
 
 	searchSubmit = event => {
 		event.preventDefault();
-		console.log('submit search!')
+		console.log('submit search!', this.state.search)
 		// pass the search url to our saga
 		let url = `/api/search?query=${this.state.search}`
 		this.props.dispatch({type: 'GET_RESULTS', payload: url})

@@ -21,6 +21,8 @@ const displayResults = (state=[], action) => {
 
 function* getResults(action) {
 	try{
+		console.log('getResults saga', action.payload);
+		
 		const searchResponse = yield axios.get(`${action.payload}`);
 		yield put ({type: 'DISPLAY_RESULTS', payload: searchResponse.data.data})
 		console.log('searchresult.data.data', searchResponse.data.data)
