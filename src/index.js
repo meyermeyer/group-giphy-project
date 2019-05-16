@@ -11,8 +11,8 @@ import axios from 'axios';
 
 
 const displayResults = (state=[], action) => {
-	console.log('in displayResults reducer', action.payload);
-	console.log('action.payload:', action.payload)
+	console.log('in displayResults reducer, action.payload:', action.payload);
+	//console.log('action.payload:', action.payload)
 	if(action.type==='DISPLAY_RESULTS'){
 		return action.payload;
 	}
@@ -21,11 +21,10 @@ const displayResults = (state=[], action) => {
 
 function* getResults(action) {
 	try{
-		console.log('getResults saga', action.payload);
-		
+		//console.log('getResults saga', action.payload);
 		const searchResponse = yield axios.get(`${action.payload}`);
 		yield put ({type: 'DISPLAY_RESULTS', payload: searchResponse.data.data})
-		console.log('searchresult.data.data', searchResponse.data.data)
+		//console.log('searchresult.data.data', searchResponse.data.data)
 	}catch(error){
 		console.log('error in GET:', error)
 	}
@@ -50,7 +49,6 @@ function* sagaWatcher(){
 function* getCats() {
 	try {
 		const catResponse = yield axios.get('/api/category')
-
 		yield put({type: `SHOW_CATS`, payload: catResponse.data})
 	} catch (error) {
 		console.log(error);	
