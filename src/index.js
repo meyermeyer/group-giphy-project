@@ -17,7 +17,7 @@ const displayResults = (state=[], action) => {
 		return action.payload;
 	}
 	return state;
-}
+};//end displayResults
 
 function* getResults(action) {
 	try{
@@ -29,11 +29,22 @@ function* getResults(action) {
 	}catch(error){
 		console.log('error in GET:', error)
 	}
-}
+};//end getResults
+
+function* saveFav(action){
+	try{
+		console.log('saveFav action.payload:', action.payload);
+		yield axios.post('/api/favorite', action.payload);
+		yield put({type: 'SHOW_FAVS'})
+	}catch(error){
+		console.log('error in POST:', error)
+	}
+};//end saveFav
 
 function* sagaWatcher(){
 	yield takeEvery(`GET_CATS`, getCats)
 	yield takeEvery('GET_RESULTS', getResults)
+	yield takeEvery('SAVE_FAV', saveFav)
 }
 
 function* getCats() {
