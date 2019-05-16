@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, IconButton, TextField} from '@material-ui/core';
 import {FavoriteBorder, Favorite} from '@material-ui/icons';
-import axios from 'axios';
+import axios from 'axios'
+
 
 class Search extends Component {
 
