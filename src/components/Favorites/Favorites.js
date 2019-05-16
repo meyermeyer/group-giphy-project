@@ -5,6 +5,14 @@ import { connect } from 'react-redux'
 
 export class Favorites extends Component {
 
+    componentDidMount() {
+        this.showCategories();
+    }
+
+    showCategories = () => {
+        this.props.dispatch({type: `GET_CATS`})
+    }
+
     state = {
         category: ''
     }
@@ -26,15 +34,15 @@ export class Favorites extends Component {
         <ul>
             <li>Gifs will go here:</li>
             <select onChange={this.handleChangeFor}>
-                    {this.props.reduxState.showCats.map((category, i) => {
+                    {this.props.reduxState.showCats.map((cat) => {
                     return (
-                        <div>
-                            <option value={category}>{category}</option>
+                        <>
+                            <option value={cat.name}>{cat.name}</option>
                             {/* <option value="vega">Vega</option>
                             <option value="cartoon">Cartoon</option>
                             <option value="nsfw">NFSW</option>
                             <option value="meme">Meme</option> */}
-                        </div>
+                        </>
                     )
                 })}
             </select>
