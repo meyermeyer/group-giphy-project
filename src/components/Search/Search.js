@@ -5,9 +5,7 @@ import SearchResult from '../SearchResult/SearchResult';
 class Search extends Component {
 
 	state = {
-		favorited: [],
-		search: '',
-		isFavorite: false
+		search: ''
 	}
 
 	handleChange = (event) => {
@@ -41,11 +39,14 @@ class Search extends Component {
 						color="primary">Search!</Button>
 				</form>
 
+				<Button type="submit" variant="contained"
+					color="primary">GO TO FAVORITES</Button>
+
 				<div className="displaySearchDiv">
 					<p>GIFS GO HERE</p>
 					{this.props.reduxState.displayResults.map((aGif) => {
 						return(
-							<SearchResult key={aGif.id} gif={aGif} link={this.aGif.images.downsized_medium.url} />
+							<SearchResult key={aGif.id} gif={aGif} link={aGif.images.downsized_medium.url} />
 						)
 					})}
 				</div>
