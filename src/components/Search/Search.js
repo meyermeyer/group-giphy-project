@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Button, TextField} from '@material-ui/core';
-import axios from 'axios';
+import {Button, IconButton, TextField} from '@material-ui/core';
+import {FavoriteBorder, Favorite} from '@material-ui/icons';
 
 class Search extends Component {
 
 	state = {
 		favorited: [],
-		search: ''
+		search: '',
+		isFavorite: false
 	}
+
+	favoriteClick = (event) => {
+		console.log('favorited!');
+		this.setState({
+			isFavorite: !this.state.isFavorite
+		})
+	};//end favoriteClick
 
 	handleChange = (event) => {
 		// capture search term entered into input and set as local search term state
@@ -41,6 +49,20 @@ class Search extends Component {
 
 	render(){
 		//console.log('search:', this.state.search);
+		let favoriteButton;
+		if(this.state.isFavorite){
+			favoriteButton =(
+				<IconButton color="primary" onClick={this.favoriteClick} aria-label="Add to shopping cart">
+					<Favorite />
+				</IconButton>
+			)
+		}else{
+			favoriteButton = (
+				<IconButton color="primary" onClick={this.favoriteClick} aria-label="Add to shopping cart">
+					<FavoriteBorder />
+				</IconButton>
+			)
+		}//end if/else statement
 		return(
 			<div className="searchDiv">
 				<form className="searchForm" onSubmit={this.searchSubmit} >
@@ -50,6 +72,9 @@ class Search extends Component {
 						<br></br>
 					<Button type="submit" variant="contained" 
 						color="primary">Search!</Button>
+						<br></br>
+					{favoriteButton}
+
 				</form>
 
 				<div className="displaySearchDiv">
@@ -57,6 +82,8 @@ class Search extends Component {
 					{/* {this.props.reduxState.displayResults.map((gif, i) => {
 						return(
 							<img key={i} src={this.props.reduxState.displayResults.gif.PATH} alt="id?"/>
+							<Button type="submit" variant="contained"
+								color="primary">Favorite!</Button>
 						)
 					})} */}
 				</div>
