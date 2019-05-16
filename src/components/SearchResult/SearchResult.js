@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {IconButton} from '@material-ui/core';
 import {FavoriteBorder, Favorite} from '@material-ui/icons';
-
 class SearchResult extends Component{
 
 	state = {
@@ -12,13 +11,12 @@ class SearchResult extends Component{
 	favoriteClick = (event) => {
 		console.log('favorited!');
 		this.setState({
-			isFavorite: !this.state.isFavorite
+			// FOR NOW..... on click, we just want to change the appearance of the button,
+			// I think the actual deleting of gif from favorites will be done somewhere else
+			isFavorite: true
 		})
-		if (this.state.isFavorite) {
-			this.setState({
-
-			})
-		}
+		console.log('favorite click url:', this.props.link)
+		this.props.dispatch({ type: 'SAVE_FAV', payload: this.props.link })
 	};//end favoriteClick
 
 	render(){
@@ -26,15 +24,11 @@ class SearchResult extends Component{
 		if (this.state.isFavorite) {
 			favoriteButton = (
 				<IconButton color="primary" onClick={this.favoriteClick} aria-label="Favorite this gif!">
-					<Favorite />
-				</IconButton>
-			)
+					<Favorite /></IconButton>)
 		} else {
 			favoriteButton = (
 				<IconButton color="primary" onClick={this.favoriteClick} aria-label="Favorite this gif!">
-					<FavoriteBorder />
-				</IconButton>
-			)
+					<FavoriteBorder /></IconButton>)
 		}//end if/else statement
 		return(
 			<div className="gifDisplayDiv">
