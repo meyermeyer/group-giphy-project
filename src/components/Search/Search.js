@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Button, TextField} from '@material-ui/core';
 import SearchResult from '../SearchResult/SearchResult';
+import '../Search/Search.css'
+
+
+
 class Search extends Component {
 
 	state = {
