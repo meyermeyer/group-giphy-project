@@ -1,61 +1,48 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import axios from 'axios'
+
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import FavoriteItem from '../FavoriteItem/FavoriteItem';
+
 
 
 export class Favorites extends Component {
 
-    componentDidMount() {
-        this.showCategories();
-    }
+  componentDidMount() {
+    this.showCategories();
+    this.showFavorites();
+  }
 
-    showCategories = () => {
-        this.props.dispatch({type: `GET_CATS`})
-    }
+  showFavorites = () => {
+    this.props.dispatch({ type: 'GET_FAVS' })
+  }
 
-    state = {
-        category: ''
-    }
+  showCategories = () => {
+    this.props.dispatch({ type: `GET_CATS` })
+  }
 
- // handle change of favorite category
- handleChangeFor = (event) => {
-   console.log('cat_id', event.target.value)
-    this.setState({
-        category: event.target.value
-    });
-    // let url = `api/favorites${gif ID}`
 
-    
-  } // end handleChangeFor
-
-  
 
   render() {
     console.log(this.state.category)
     return (
       <div>
-        <ul>
-            <li>Gifs will go here:</li>
-            <select onChange={this.handleChangeFor}>
-                    {this.props.reduxState.showCats.map((cat) => {
-                    return (
-                        <>
-                            <option value={cat.id}>{cat.name}</option>
-                        </>
-                    )
-                })}
-            </select>
-        </ul>
+        <p>Gifs will go here:</p>
+			{this.props.reduxState.showFavs.map((aFav) => {
+				return(
+					<FavoriteItem key={aFav.id} fav={aFav}/>
+				)
+			})}
+
       </div>
     )
   }
 }
 
 const mapRedux = (reduxState) => {
-    return {
-        reduxState
-    }
+  return {
+    reduxState
   }
+}
 
-export default connect(mapRedux) (Favorites);
+export default connect(mapRedux)(Favorites);
 
