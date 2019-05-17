@@ -1,20 +1,22 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FavoriteItem from '../FavoriteItem/FavoriteItem';
+
 export class Favorites extends Component {
 
-    componentDidMount() {
-        this.showCategories();
-		this.showFavorites();
-    }
+  componentDidMount() {
+    this.showCategories();
+    this.showFavorites();
+  }
 
-	showFavorites = () => {
-		this.props.dispatch({type: 'GET_FAVS'})
-	}
+  showFavorites = () => {
+    this.props.dispatch({ type: 'GET_FAVS' })
+  }
 
-    showCategories = () => {
-        this.props.dispatch({type: `GET_CATS`})
-    }
+  showCategories = () => {
+    this.props.dispatch({ type: `GET_CATS` })
+  }
 
   render() {
     return (
@@ -26,16 +28,17 @@ export class Favorites extends Component {
 					<FavoriteItem key={aFav.id} fav={aFav}/>
 				)
 			})}
+
       </div>
     )
   }
 }
 
 const mapRedux = (reduxState) => {
-    return {
-        reduxState
-    }
+  return {
+    reduxState
   }
+}
 
-export default connect(mapRedux) (Favorites);
+export default connect(mapRedux)(Favorites);
 
