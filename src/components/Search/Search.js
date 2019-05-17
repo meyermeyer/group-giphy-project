@@ -26,6 +26,10 @@ class Search extends Component {
 		})
 	};//end searchSubmit
 
+	handleCLick = () => {
+		this.props.history.push('/api/favorite')
+	}
+
 	render(){
 		//console.log('search:', this.state.search);
 		return(
@@ -36,14 +40,14 @@ class Search extends Component {
 						variant="outlined" label="Search for a gif!" placeholder="What gifs you want?"/>
 						<br></br>
 					<Button type="submit" variant="contained" 
-						color="primary">Search!</Button>
+						color="primary" >Search!</Button>
 				</form>
 
 				<Button type="submit" variant="contained"
-					color="primary">GO TO FAVORITES</Button>
+					color="primary" onClick = {this.handleCLick}>GO TO FAVORITES</Button>
 
 				<div className="displaySearchDiv">
-					<p>GIFS GO HERE</p>
+					<h2>GIFS</h2>
 					{this.props.reduxState.displayResults.map((aGif) => {
 						return(
 							<SearchResult key={aGif.id} gif={aGif} link={aGif.images.downsized_medium.url} />
