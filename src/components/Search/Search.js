@@ -47,7 +47,7 @@ class Search extends Component {
 					color="primary" onClick = {this.handleCLick}>GO TO FAVORITES</Button>
 
 				<div className="displaySearchDiv">
-					<p>GIFS GO HERE</p>
+					<h2>GIFS</h2>
 					{this.props.reduxState.displayResults.map((aGif) => {
 						return(
 							<SearchResult key={aGif.id} gif={aGif} link={aGif.images.downsized_medium.url} />

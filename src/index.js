@@ -19,6 +19,14 @@ const displayResults = (state=[], action) => {
 	return state;
 };//end displayResults
 
+const showFavs = (state=[], action) => {
+	console.log('in showFavs reducer, action.payload:', action.payload);
+	if(action.type === 'SHOW_FAVS'){
+		return action.payload;
+	}
+	return state;
+};//end showFavs
+
 function* getResults(action) {
 	try{
 		//console.log('getResults saga', action.payload);
@@ -40,10 +48,21 @@ function* saveFav(action){
 	}
 };//end saveFav
 
+function* getFavs(){
+	try{
+		const allTheFavorites = yield axios.get('/api/favorite');
+		console.log('allTheFavorites.data', allTheFavorites.data)
+		yield put ({type: 'SHOW_FAVS', payload: allTheFavorites.data})
+	}catch(error){
+		console.log('error in fav get:', error)
+	}
+};//end getFavs
+
 function* sagaWatcher(){
 	yield takeEvery(`GET_CATS`, getCats)
 	yield takeEvery('GET_RESULTS', getResults)
 	yield takeEvery('SAVE_FAV', saveFav)
+	yield takeEvery('GET_FAVS', getFavs)
 }
 
 function* getCats() {
@@ -69,7 +88,8 @@ const sagaMiddleware = createSagaMiddleware();
 const storeInstance = createStore(
 	combineReducers({
 		displayResults,
-		showCats
+		showCats,
+		showFavs
 	}),
 	applyMiddleware(sagaMiddleware, logger),
 )
