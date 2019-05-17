@@ -18,17 +18,6 @@ export class Favorites extends Component {
     this.props.dispatch({ type: `GET_CATS` })
   }
 
-  state = {
-    category: ''
-  }
-
-  // handle change of favorite category
-  handleChangeFor = (event) => {
-    this.setState({
-      category: event.target.value
-    });
-
-  } // end handleChangeFor
 
 
 
@@ -37,21 +26,11 @@ export class Favorites extends Component {
     return (
       <div>
         <p>Gifs will go here:</p>
-        {this.props.reduxState.showFavs.map((aFav) => {
-          return (
-            <FavoriteItem key={aFav.id} fav={aFav} url={aFav.gif_url} />
-          )
-        })}
-        <select onChange={this.handleChangeFor}>
-          {this.props.reduxState.showCats.map((cat) => {
-            return (
-              <>
-                <option value={cat.name}>{cat.name}</option>
-              </>
-            )
-          })}
-        </select>
-
+			{this.props.reduxState.showFavs.map((aFav) => {
+				return(
+					<FavoriteItem key={aFav.id} fav={aFav}/>
+				)
+			})}
       </div>
     )
   }
