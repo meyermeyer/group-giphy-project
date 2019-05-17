@@ -16,7 +16,7 @@ export class FavoriteItem extends Component{
 		// });
 		console.log('category change GIF id:', this.props.fav.id)
 		let url = `/api/favorite/${this.props.fav.id}`
-		axios.put(url, event.target.value)
+		axios.put(url, {cat_id: event.target.value})
 	} // end handleChangeFor
 
 	
@@ -29,7 +29,7 @@ export class FavoriteItem extends Component{
 					{this.props.reduxState.showCats.map((cat) => {
 						return (
 							<>
-								<option value={cat.name}>{cat.name}</option>
+								<option value={cat.id}>{cat.name}</option>
 							</>
 						)
 					})}
