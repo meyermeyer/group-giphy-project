@@ -22,7 +22,7 @@ export class Favorites extends Component {
 
 
   render() {
-    console.log(this.state.category)
+    // console.log(this.state.category)
     return (
       <div>
         <p>Gifs will go here:</p>
