@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 
 export class Favorites extends Component {
@@ -18,9 +19,13 @@ export class Favorites extends Component {
 
  // handle change of favorite category
  handleChangeFor = (event) => {
+   console.log(event.target.value)
     this.setState({
         category: event.target.value
     });
+    let url = `/api/favorite/${event.target.id}`
+   axios.put(url)
+
     
   } // end handleChangeFor
 
@@ -36,7 +41,7 @@ export class Favorites extends Component {
                     {this.props.reduxState.showCats.map((cat) => {
                     return (
                         <>
-                            <option value={cat.name}>{cat.name}</option>
+                            <option value={cat.id}>{cat.name}</option>
                         </>
                     )
                 })}
