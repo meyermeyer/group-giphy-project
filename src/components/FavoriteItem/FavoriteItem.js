@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import {Chip} from '@material-ui/core';
 
 
 export class FavoriteItem extends Component{
