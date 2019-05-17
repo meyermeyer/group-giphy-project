@@ -6,18 +6,15 @@ import {Chip} from '@material-ui/core';
 
 export class FavoriteItem extends Component{
 
-	// state = {
-	// 	category: ''
-	// }
-
 	// handle change of favorite category
 	handleChangeFor = (event) => {
-		// this.setState({
-		// 	category: event.target.value
-		// });
 		console.log('category change GIF id:', this.props.fav.id)
 		let url = `/api/favorite/${this.props.fav.id}`
 		axios.put(url, {cat_id: event.target.value})
+	};
+	
+	handleClick = () => {
+		console.log('you clicked the thing');
 	} // end handleChangeFor
 
 	
@@ -35,6 +32,9 @@ export class FavoriteItem extends Component{
 						)
 					})}
 				</select>
+				<Chip
+					label="Clickable Deletable Chip"
+					onClick={this.handleClick} />
 			</div>
 		)
 	}

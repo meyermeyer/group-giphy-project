@@ -23,7 +23,6 @@ export class Favorites extends Component {
       <div>
         <h2>Here are all your favorited gifs!</h2>
 			{this.props.reduxState.showFavs.map((aFav) => {
-				console.log('aFav.id', aFav.id)
 				return(
 					<FavoriteItem key={aFav.id} fav={aFav}/>
 				)
