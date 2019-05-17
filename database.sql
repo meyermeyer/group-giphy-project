@@ -11,7 +11,7 @@ CREATE TABLE "category" (
 
 -- Default categories. You may change them :)
 INSERT INTO "category" ("name")
-VALUES ('funny'), ('vega'), ('cartoon'), ('nsfw'), ('meme');
+VALUES ('funny'), ('baconian'), ('cartoon'), ('nsfw'), ('meme');
 
 -- I made our favorites table
 CREATE TABLE "favorites" (
