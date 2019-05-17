@@ -33,7 +33,7 @@ function* getResults(action) {
 function* saveFav(action){
 	try{
 		console.log('saveFav action.payload:', action.payload);
-		yield axios.post('/api/favorite', action.payload);
+		yield axios.post('/api/favorite', {gif_url: action.payload});
 		yield put({type: 'SHOW_FAVS'})
 	}catch(error){
 		console.log('error in POST:', error)

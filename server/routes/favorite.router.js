@@ -10,8 +10,8 @@ router.get('/', (req, res) => {
 
 // add a new favorite 
 router.post('/', (req, res) => {
-  const newFav = req.body
-  console.log('POST req.body:', req.body)
+  const newFav = req.body.gif_url
+  console.log('POST req.body:', req.body.gif_url)
   const queryText = `INSERT INTO "favorites" ("gif_url") VALUES ($1);`;
   const queryValues = [newFav];
   
