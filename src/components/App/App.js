@@ -11,17 +11,17 @@ class App extends Component {
       <div>
         <Router>
           <header>
-            <li><Link to = '/'>SEARCH</Link></li>
-            <li><Link to = '/api/favorite'>FAVORITES</Link></li>
+            <li><Link to='/'>SEARCH</Link></li>
+            <li><Link to='/api/favorite'>FAVORITES</Link></li>
           </header>
-        <h1>Giphy Search!</h1>
-        <Route exact path = '/' component = { Search }/>
-        <Route path = '/api/favorite' component = { Favorites }/>
+          <h1>Giphy Search!</h1>
+          <Route exact path='/' component={Search} />
+          <Route path='/api/favorite' component={Favorites} />
         </Router>
       </div>
     );
   }
-  
+
 }
 
 export default App;
