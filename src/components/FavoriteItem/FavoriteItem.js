@@ -23,8 +23,8 @@ export class FavoriteItem extends Component{
 	render(){
 		return(
 			<div className="favoritesDisplayDiv">
-				<p>FAVORITE GIF</p>
 				<img src={this.props.fav.gif_url} alt="gif" />
+				<p>Add a category to your gif:</p>
 				<select onChange={this.handleChangeFor}>
 					{this.props.reduxState.showCats.map((cat) => {
 						return (
