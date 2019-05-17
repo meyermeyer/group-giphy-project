@@ -1,8 +1,10 @@
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import {Button} from '@material-ui/core'
 import './FavoriteItem.css'
+import {Chip} from '@material-ui/core';
 
 
 export class FavoriteItem extends Component{
