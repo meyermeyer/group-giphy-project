@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from '../Search/Search';
 import Favorites from '../Favorites/Favorites'
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import '../App/App.css'
 
 class App extends Component {
 

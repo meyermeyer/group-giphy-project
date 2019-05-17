@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {IconButton} from '@material-ui/core';
 import {FavoriteBorder, Favorite} from '@material-ui/icons';
+import '../SearchResult/SearchResult.css'
+
+
 class SearchResult extends Component{
 
 	state = {
@@ -31,10 +34,12 @@ class SearchResult extends Component{
 					<FavoriteBorder /></IconButton>)
 		}//end if/else statement
 		return(
-			<div className="gifDisplayDiv">
-				<img src={this.props.gif.images.downsized_medium.url} alt="gif" />
+			<div className="polaroid">
+				<div className="column">
+				<img className = "gifImage" src={this.props.gif.images.downsized_medium.url} alt="gif" />
 				<br></br>
 				<p>Really love this gif? Favorite it!</p>{favoriteButton}
+				</div>
 			</div>
 		)
 	}

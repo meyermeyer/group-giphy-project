@@ -27,6 +27,11 @@ const showFavs = (state = [], action) => {
 	return state;
 };//end showFavs
 
+
+function* addCat(action) {
+	axios.put(action.url, { cat_id: action.cat_id })
+}
+
 function* getResults(action) {
 	try {
 		//console.log('getResults saga', action.payload);
@@ -37,6 +42,12 @@ function* getResults(action) {
 		console.log('error in GET:', error)
 	}
 };//end getResults
+
+// function* deleteFav(action) {
+// 	try {
+
+// 	}
+// }
 
 function* saveFav(action) {
 	try {
@@ -63,6 +74,7 @@ function* sagaWatcher() {
 	yield takeEvery('GET_RESULTS', getResults)
 	yield takeEvery('SAVE_FAV', saveFav)
 	yield takeEvery('GET_FAVS', getFavs)
+	yield takeEvery('ADD_CAT', addCat)
 }
 
 function* getCats() {

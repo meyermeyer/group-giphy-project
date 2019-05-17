@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import {Chip} from '@material-ui/core';
+
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import axios from 'axios'
+import {Button, Chip} from '@material-ui/core'
+import './FavoriteItem.css';
 
 
 export class FavoriteItem extends Component{
 
 	// handle change of favorite category
 	handleChangeFor = (event) => {
+		// this.setState({
+		// 	category: event.target.value
+		// });
+		this.props.dispatch({type: 'ADD_CAT', url: url, cat_id: event.target.value})
 		console.log('category change GIF id:', this.props.fav.id)
 		let url = `/api/favorite/${this.props.fav.id}`
-		axios.put(url, {cat_id: event.target.value})
-	};
-	
-	handleClick = () => {
-		console.log('you clicked the thing');
+		// axios.put(url, {cat_id: event.target.value})
 	} // end handleChangeFor
+
+	handleDelete = (event) => {
+		console.log('in handleDelete')
+	}
 
 	
 	render(){
@@ -35,6 +41,10 @@ export class FavoriteItem extends Component{
 				<Chip
 					label="Clickable Deletable Chip"
 					onClick={this.handleClick} />
+
+				<Button onClick={this.handleDelete} type="submit" variant="contained"color="secondary">
+					Delete
+				</Button>
 			</div>
 		)
 	}
