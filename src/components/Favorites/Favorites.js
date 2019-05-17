@@ -1,6 +1,8 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FavoriteItem from '../FavoriteItem/FavoriteItem';
+
 
 
 export class Favorites extends Component {
@@ -20,7 +22,6 @@ export class Favorites extends Component {
 
 
 
-
   render() {
     console.log(this.state.category)
     return (
@@ -31,6 +32,7 @@ export class Favorites extends Component {
 					<FavoriteItem key={aFav.id} fav={aFav}/>
 				)
 			})}
+
       </div>
     )
   }
