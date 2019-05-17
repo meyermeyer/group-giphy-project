@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {Chip} from '@material-ui/core';
 
 
 export class FavoriteItem extends Component{
