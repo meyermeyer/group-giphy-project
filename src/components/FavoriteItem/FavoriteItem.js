@@ -2,16 +2,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import {Button} from '@material-ui/core'
-import './FavoriteItem.css'
-import {Chip} from '@material-ui/core';
+import {Button, Chip} from '@material-ui/core'
+import './FavoriteItem.css';
 
 
 export class FavoriteItem extends Component{
-
-	// state = {
-	// 	category: ''
-	// }
 
 	// handle change of favorite category
 	handleChangeFor = (event) => {
@@ -43,6 +38,10 @@ export class FavoriteItem extends Component{
 						)
 					})}
 				</select>
+				<Chip
+					label="Clickable Deletable Chip"
+					onClick={this.handleClick} />
+
 				<Button onClick={this.handleDelete} type="submit" variant="contained"color="secondary">
 					Delete
 				</Button>
