@@ -19,12 +19,11 @@ export class Favorites extends Component {
 
  // handle change of favorite category
  handleChangeFor = (event) => {
-   console.log(event.target.value)
+   console.log('cat_id', event.target.value)
     this.setState({
         category: event.target.value
     });
-    let url = `/api/favorite/${event.target.id}`
-   axios.put(url)
+    // let url = `api/favorites${gif ID}`
 
     
   } // end handleChangeFor
