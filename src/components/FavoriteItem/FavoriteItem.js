@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 
-export class FavoriteItem extends Component{
-	render(){
-		return(
+export class FavoriteItem extends Component {
+	render() {
+		return (
 			<p>FAVORITE GIF</p>
 		)
 	}
