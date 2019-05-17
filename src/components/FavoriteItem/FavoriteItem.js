@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import {Button} from '@material-ui/core'
+import './FavoriteItem.css'
 
 
 export class FavoriteItem extends Component{
@@ -34,6 +36,9 @@ export class FavoriteItem extends Component{
 						)
 					})}
 				</select>
+				<Button type="submit" variant="contained"color="secondary">
+					Delete
+				</Button>
 			</div>
 		)
 	}
